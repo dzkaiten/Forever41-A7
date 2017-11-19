@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>my page xd</title>
+    <title>Forever 41</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -11,14 +11,14 @@
   </head>
   <body>
     <!-- header -->
-    <nav class="navbar navbar-light bg-light">
+    <nav id="navbar" class="navbar">
       <span class="navbar-brand mb-0 h1">Profile</span>
       <span style="float:right;"><i class="fa fa-sign-out" aria-hidden="true"></i>
       <i id="help" class="fa fa-question-circle" type="button" data-toggle="modal" data-target="#helpModal" aria-hidden="true"></i></span>
     </nav>
-
+    <br>
     <div class=col-sm-12>
-      <img src="images/cat_icon.jpg" class="img-fluid">
+      <img src="images/profpic2.jpg" class="img-fluid">
       <br><br>
       <h7 id='name'>Name: Daniel Zhang</h7> <br>
       <h7 id='bday'>Birthday: 10/08/1977</h7><br>
@@ -30,8 +30,8 @@
       <h6>My Conditions:</h6>
       <ul id='my-conditions'>
       </ul>
-      <a class="btn btn-outline-dark float-left" href="./conditions.html" role="button">Edit Conditions</a>
-      <br>
+      <a class="btn btn-outline-dark float-left" href="./edit_conditions.html" role="button">Edit Conditions</a>
+      <br><br><br><br><br>
     </div>
 
 
@@ -55,33 +55,7 @@
 
     <script>
       $(document).ready(function() {
-        console.log(localStorage);
-        if (localStorage.getItem('name')) {
-          document.getElementById('name').innerHTML = 'Name: ' + localStorage.getItem('name');
-        }
-        if (localStorage.getItem('bday')) {
-          document.getElementById('bday').innerHTML = 'Birthday: ' + localStorage.getItem('bday');
-        }
-        if (localStorage.getItem('gender')) {
-          var gender = localStorage.getItem('gender') + '';
-          document.getElementById('gender').innerHTML = 'Gender: ' + gender.charAt(0).toUpperCase() + gender.slice(1);
-        }
-        if (localStorage.getItem('email')) {
-          document.getElementById('email').innerHTML = 'Email: ' + localStorage.getItem('email');
-        }
-
-        if (localStorage.getItem('addConditions')) {
-          console.log("LocalStorage: ", localStorage.getItem('addConditions'));
-          var conditions = (localStorage.getItem('addConditions') + '').split(',');
-          console.log(conditions);
-          for (var i = 0; i < conditions.length; i++) {
-            console.log(conditions[i]);
-            var $cond = $('<li/>', {
-          }).text(conditions[i]);
-          $('#my-conditions').append($cond);
-          }
-        }
-
+        displayProfile();
       });
     </script>
 

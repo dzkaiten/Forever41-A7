@@ -32,10 +32,10 @@ function userLogin() {
     if (allUsers[i].email === email && allUsers[i].password === pass) {
       localStorage.setItem('userIndex', i);
       userIndex = localStorage.getItem('userIndex');
-      alert('The selected user is at index = ' + i + ': ' + JSON.stringify(users[userIndex]));
+      // alert('The selected user is at index = ' + i + ': ' + JSON.stringify(users[userIndex]));
       window.location.href = './dashboard.html';
       return;
-    } 
+    }
   }
   alert('Invalid login! Try again..');
 }
@@ -67,7 +67,7 @@ function getName() {
   // If new user
   localStorage.setItem('userIndex', users.length - 1);
   userIndex = localStorage.getItem('userIndex');
-  alert('New user! Selected user is at users.length - 1: ' + JSON.stringify(users[userIndex]));
+  // alert('New user! Selected user is at users.length - 1: ' + JSON.stringify(users[userIndex]));
   window.location.href = './join_email.html';
 }
 
@@ -113,32 +113,57 @@ function getBirth() {
   console.log('the user', users[userIndex]);
   users[userIndex].birthday = birthdate;
   localStorage.setItem('users', JSON.stringify(users));
-  window.location.href = './join_profilepic.html';
+  window.location.href = './select_conditions.html';
+}
+
+function getConditions() {
+  var selectedCondition = $('#select2-conditions').val() + '';
+
+  if (selectedCondition && (selectedCondition.length !== 0)) {
+    var conditions = users[userIndex].conditions;
+
+    if (conditions === null || conditions.length === 0) {
+      users[userIndex].conditions = selectedCondition.split(",");
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+    else {
+      selectedCondition.split(",").forEach(function(condition) {
+        conditions.push(condition);
+      });
+      users[userIndex].conditions = conditions;
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+  }
+  window.location.href = './dashboard.html';
 }
 
 function renderConditions() {
   console.log('renderConditions()');
   console.log('userIndex: ' + userIndex);
   console.log('users[userIndex]: ' + JSON.stringify(users[userIndex]));
-  var conditions = users[userIndex].conditions;
 
-  if (conditions) {
-    for (var i = 0; i < conditions.length; i++) {
-      console.log(conditions[i]);
-      var $div = $('<div/>', {
-        class: 'card text-center',
-        id: (conditions[i] + '').replace(/ /g, '-'),
-        rel: 'external',
+  if (users && users[userIndex]) {
+    var conditions = users[userIndex].conditions;
 
-      }).html('<div class="card text-center"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div>');
-      $($div).insertBefore($('#add'));
+    if (conditions) {
+      for (var i = 0; i < conditions.length; i++) {
+        console.log(conditions[i]);
+        var $div = $('<div/>', {
+          class: 'card text-center',
+          id: (conditions[i] + '').replace(/ /g, '-'),
+          rel: 'external',
+
+        }).html('<div class="card text-center"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div>');
+        $($div).insertBefore($('#add'));
+      }
     }
   }
+
 
   $('#overview').click(function(){
     window.location.href = './overview.html';
   });
-  
+
   $('#add').click(function(){
     window.location.href = './conditions.html';
   });
@@ -146,13 +171,20 @@ function renderConditions() {
   $('#Anemia').click(function(){
     window.location.href = './anemia.html';
   });
+
   $('#Arthritis').click(function(){
     window.location.href = './arthritis.html';
   });
+
   $('#Back-Pain').click(function(){
     window.location.href = './backpain.html';
   });
-  $('#Cholesterol').click(function(){
+
+  $('#High-Blood-Pressure').click(function(){
+    window.location.href = './highbp.html';
+  });
+
+  $('#High-Cholesterol').click(function(){
     window.location.href = './cholesterol.html';
   });
 
@@ -168,90 +200,64 @@ function renderConditions() {
     window.location.href = './fatigue.html';
   });
 
-  $('#High-Blood-Pressure').click(function(){
-    window.location.href = './highbp.html';
-  });
-
   $('#Ulcers').click(function(){
     window.location.href = './ulcers.html';
   });
-
-   
 }
 
-// TODO: change this to use only userIndex
-function getConditions() {
-  var selectedCondition = $('#select2-conditions').val() + '';
+function displayProfile() {
+  console.log(localStorage);
+  console.log(users[userIndex].name);
+  document.getElementById('name').innerHTML = 'Name: ' + users[userIndex].name;
+  document.getElementById('bday').innerHTML = 'Birthday: ' + users[userIndex].birthday;
+  document.getElementById('gender').innerHTML = 'Gender: ' + users[userIndex].gender;
+  document.getElementById('email').innerHTML = 'Email: ' + users[userIndex].email;
 
-  if (selectedCondition && (selectedCondition.length !== 0)) {
-    var conditions = users[userIndex].conditions;
-    alert("conditions: " + conditions);
+  var myConditions = users[userIndex].conditions;
 
-    if (conditions === null || conditions.length === 0) {
-      // localStorage.setItem('conditions', selectedCondition);
-      // localStorage.setItem('users', conditions);
-      alert(selectedCondition);
-      alert(selectedCondition.split(","));
-
-      users[userIndex].conditions = selectedCondition.split(",");
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-    else {
-      // var conditions = localStorage.getItem('conditions') + ','+ selectedCondition;
-      alert("not null");
-      alert(selectedCondition);
-      alert(selectedCondition.split(","));
-
-      selectedCondition.split(",").forEach(function(condition) {
-        conditions.push(condition);
-      });
-      // conditions.push(selectedCondition.split(","));
-
-      alert("Conditionssss: " + conditions);
-
-      users[userIndex].conditions = conditions;
-
-      alert(JSON.stringify(users));
-      // localStorage.setItem('conditions', conditions);
-      // users[userIndex].conditions = conditions.split(",");
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-    window.location.href = './dashboard.html';
-  } else {
-    alert('No condition selected!');
+  for (var i = 0; i < myConditions.length; i++) {
+    $("<li />").html(myConditions[i]).appendTo($('#my-conditions'));
   }
 }
 
-$('#overview').click(function(){
-  window.location.href = './overview.html';
-});
-$('#add').click(function(){
-  window.location.href = './conditions.html';
-});
-$('#High-Blood-Pressure').click(function(){
-  window.location.href = './highbp.html';
-});
-$('#Diabetes').click(function(){
-  window.location.href = './diabetes.html';
-});
-$('#Anemia').click(function(){
-  window.location.href = './anemia.html';
-});
-$('#Back-Pain').click(function(){
-  window.location.href = './backpain.html';
-});
-$('#Cholesterol').click(function(){
-  window.location.href = './cholesterol.html';
-});
-$('#Dementia').click(function(){
-  window.location.href = './dementia.html';
-});
-$('#Fatigue').click(function(){
-  window.location.href = './faigue.html';
-});
-$('#Ulcers').click(function(){
-  window.location.href = './ulcers.html';
-});
+function displayConditionsOnEdit() {
+  var myConditions = users[userIndex].conditions;
+  console.log(myConditions);
+
+  for (var i = 0; i < myConditions.length; i++) {
+    $("<li />").html(myConditions[i]).appendTo($('#edit-profile-conditions-list'));
+  }
+}
+
+function editConditions() {
+  console.log('hello');
+  // $('.select2-multiple').select2();
+  $('#select2-edit-conditions').select2();
+
+  if (users && users[userIndex]) {
+    var conditions = users[userIndex].conditions;
+    if (conditions) {
+      console.log(conditions);
+      $('#select2-edit-conditions').val(conditions);
+      $('#select2-edit-conditions').trigger('change');
+    }
+  }
+}
+
+function saveEditConditions() {
+  var editConditions = $('#select2-edit-conditions').val() + '';
+
+  var conditions = [];
+  if (editConditions) {
+    editConditions.split(",").forEach(function(condition) {
+      conditions.push(condition);
+    });
+  }
+  users[userIndex].conditions = conditions;
+  localStorage.setItem('users', JSON.stringify(users));
+  window.location.href = './dashboard.html';
+
+}
 
 $('#back-join').click(function(){
   window.history.back();
@@ -267,7 +273,6 @@ $('#setting').click(function(){
 
 $('#help').click(function(){
   window.location.href = './help.html';
-  localStorage.clear();
 });
 
 $('.fa-sign-out').click(function() {
