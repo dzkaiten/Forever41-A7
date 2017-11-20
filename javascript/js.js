@@ -220,6 +220,17 @@ function displayProfile() {
   }
 }
 
+function saveEditProfile() {
+  users[userIndex].name = localStorage.getItem('name');
+  users[userIndex].bday = localStorage.getItem('birthday');
+  users[userIndex].gender = localStorage.getItem('gender');
+  users[userIndex].email = localStorage.getItem('email');
+
+  // alert('saveEditProfile().users[userIndex]: ' + JSON.stringify(users[userIndex]));
+  localStorage.setItem('users', JSON.stringify(users));
+
+}
+
 function displayConditionsOnEdit() {
   var myConditions = users[userIndex].conditions;
   console.log(myConditions);
