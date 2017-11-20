@@ -128,7 +128,8 @@ function getConditions() {
     }
     else {
       selectedCondition.split(",").forEach(function(condition) {
-        conditions.push(condition);
+        if ($.inArray(condition, conditions) === -1)
+          conditions.push(condition);
       });
       users[userIndex].conditions = conditions;
       localStorage.setItem('users', JSON.stringify(users));
