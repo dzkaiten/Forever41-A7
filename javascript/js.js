@@ -169,7 +169,7 @@ function renderConditions() {
         // }).html('<div class="col"><div class="card text-center"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div></div>');
 
       
-        html += '<div class="col-6"><div class="card text-center" id="' + (conditions[i] + '').replace(/ /g, '-') + '"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div></div>';
+        html += '<div class="col-6" id="card-col"><div class="card text-center" id="' + (conditions[i] + '').replace(/ /g, '-') + '"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div></div>';
 
         if ((i % 2) !== 0) {
           html += '</div>';
@@ -179,7 +179,7 @@ function renderConditions() {
         
       }
 
-      html += '<div class="col-6 d-flex align-items-stretch"><div class="card text-center" id="add"><div class="card-body"><h4 class="card-title">+</h4></div></div></div>';
+      html += '<div class="col-6 id="card-col" d-flex align-items-stretch"><div class="card text-center" id="add"><div class="card-body"><h4 class="card-title">+</h4></div></div></div>';
       console.log('html: ' + html);
       $('.container').html(html);
     }
