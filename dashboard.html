@@ -49,7 +49,7 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
       <div class="modal-dialog">
-      
+
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -60,28 +60,21 @@
             <button type="button" id="modal-cancel" class="btn btn-default">Cancel</button>
           </div>
         </div>
-        
+
       </div>
     </div>
 
 
     <!-- bottom nav bar -->
     <nav id="bottom-nav-bar" class="navbar navbar-dark bg-dark fixed-bottom justify-content-center">
-      <div id="iconContainer">
-        <i id="dashButton" class="fa fa-home fa-lg" aria-hidden="true"></i>
-      </div>
-      <div id="iconContainer">
-        <i id="profButton" class="fa fa-user-o fa-lg" aria-hidden="true"></i>
-      </div>
-
-      <!-- <ul class="nav">
-        <li class="nav-item" id="dashButton">
+      <ul class="nav">
+        <li class="nav-item">
           <a type="button" class="nav-link" href="dashboard.html">Dashboard</a>
         </li>
-        <li class="nav-item" id="otherButton">
+        <li class="nav-item">
           <a type="button" class="nav-link" href="./profile.html">Profile</a>
         </li>
-      </ul> -->
+      </ul>
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -92,9 +85,6 @@
       $(document).ready(function() {
         var user = JSON.parse(localStorage.getItem('users'));
         var userIndex = localStorage.getItem('userIndex');
-        if (userIndex == -1) {
-          $('.container').html('<div class="card text-center" id="add"><div class="card-body"><h4 class="card-title">+</h4></div></div>')
-        }
         var name = user[userIndex].name;
         $("h5").text(name);
       });
