@@ -145,43 +145,18 @@ function renderConditions() {
 
   if (users && users[userIndex]) {
     var conditions = users[userIndex].conditions;
-    console.log('conditions: ' + conditions);
-
 
     if (conditions) {
-
-      var html = '';
-      var numCards = conditions.length + 1;
-      console.log('numCards: ' + numCards);
-
       for (var i = 0; i < conditions.length; i++) {
-        console.log('condition at index ' + i + ': ' + conditions[i]);
+        console.log(conditions[i]);
+        var $div = $('<div/>', {
+          class: 'card text-center',
+          id: (conditions[i] + '').replace(/ /g, '-'),
+          rel: 'external',
 
-        if ((i % 2) === 0) {
-          html += '<div class="row">';
-        }
-
-        // var $div = $('<div/>', {
-        //   class: 'card text-center',
-        //   id: (conditions[i] + '').replace(/ /g, '-'),
-        //   rel: 'external',
-
-        // }).html('<div class="col"><div class="card text-center"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div></div>');
-
-      
-        html += '<div class="col-6" id="card-col"><div class="card text-center" id="' + (conditions[i] + '').replace(/ /g, '-') + '"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div></div>';
-
-        if ((i % 2) !== 0) {
-          html += '</div>';
-        }
-
-        // html += '<div class="row">';
-        
+        }).html('<div class="card text-center"><div class="card-body"><h4 class="card-title">' + conditions[i] + '</h4></div></div>');
+        $($div).insertBefore($('#add'));
       }
-
-      html += '<div class="col-6" id="card-col" d-flex align-items-stretch"><div class="card text-center" id="add"><div class="card-body"><h4 class="card-title">+</h4></div></div></div>';
-      console.log('html: ' + html);
-      $('.container').html(html);
     }
   }
 
@@ -191,6 +166,7 @@ function renderConditions() {
   });
 
   $('#add').click(function(){
+    console.log('???');
     window.location.href = './conditions.html';
   });
 
@@ -312,10 +288,6 @@ $('#help').click(function(){
   window.location.href = './help.html';
 });
 
-$('.fa-cog').click(function() {
-  // window.location.href = './index.html';
-  $('#settings-modal').modal('show');
-  console.log('modal');
-  // console.log('clear local storage');
-  // localStorage.clear();
+$('.fa-sign-out').click(function() {
+  window.location.href = './index.html';
 });
