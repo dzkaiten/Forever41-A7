@@ -47,7 +47,6 @@
 
 #bottom-nav-bar {
   background: linear-gradient(to top right, #68c3d2, #a5cbcc); /* Standard syntax */
-  z-index: -1;
 }
 
 #bottom-nav-bar a {
