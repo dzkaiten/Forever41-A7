@@ -104,6 +104,10 @@
   /*height: 250px;*/
 }
 
+#profpic-a {
+  width: 50%;
+}
+
 #editname, #saveChanges, #editEmail {
   /*border: 1px;*/
   border-width: 1px;
