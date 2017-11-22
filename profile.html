@@ -14,7 +14,8 @@
     <nav id="navbar" class="navbar">
       <span class="navbar-brand mb-0 h1">Profile</span>
       <span style="float:right;"><i class="fa fa-sign-out" aria-hidden="true"></i>
-      <i id="help" class="fa fa-question-circle" type="button" data-toggle="modal" data-target="#helpModal" aria-hidden="true"></i></span>
+      <i id="help" class="fa fa-question-circle" aria-hidden="true"></i></span>
+
     </nav>
     <br>
     <div class=col-sm-12>
@@ -34,7 +35,23 @@
       <br><br><br><br><br>
     </div>
 
-
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Log out of Forever 41?</h4>
+          </div>
+          <div class="modal-body">
+            <button type="button" id="modal-logout" class="btn btn-danger">Log Out</button>
+            <button type="button" id="modal-cancel" class="btn btn-default">Cancel</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 
     <!-- bottom nav bar -->
     <nav id="bottom-nav-bar" class="navbar navbar-dark bg-dark fixed-bottom justify-content-center">
