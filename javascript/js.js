@@ -312,8 +312,10 @@ $('#help').click(function(){
   window.location.href = './help.html';
 });
 
-$('.fa-sign-out').click(function() {
-  window.location.href = './index.html';
+$('.fa-cog').click(function() {
+  // window.location.href = './index.html';
+  $('#settings-modal').modal('show');
+  console.log('modal');
   // console.log('clear local storage');
   // localStorage.clear();
 });
