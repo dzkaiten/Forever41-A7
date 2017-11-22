@@ -1,15 +1,26 @@
-body {
-  /*font-family: 'Roboto', sans-serif;*/
-  /*background: linear-gradient(to bottom left, #a5cbcc 0%, #52b7cd 100%);*/
-}
-
 /*index.html*/
 #indexBody {
-  /*background: linear-gradient(to top right, #52b7cd 0%, #a5cbcc 100%);*/
-  background: radial-gradient(white, #fcfcfc, #f2f2f2);
+  /*background: radial-gradient(white, #fcfcfc, #f2f2f2);*/
+  /*background-image: url("../images/frontImage.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;*/
 }
 
+#indexHeader {
+  color:white;
+  text-align: center;
+  font-family:'Lato';
+  font-weight: 100;
+  font-size: 14px;
+}
 
+#f41 {
+  font-family: 'Courgette', cursive;
+  font-size: 50px;
+}
+
+/*general styling*/
 #navbar {
   /*background-color: #52b7cd;*/
   background: linear-gradient(to top right, #52b7cd, #a5cbcc); /* Standard syntax */
@@ -17,7 +28,7 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.col-6, .container {
+#card-col, #card-container {
    padding-right: 0px;
    padding-left: 0px; 
 }
@@ -25,6 +36,15 @@ body {
 .card {
   width: 100%;
   height: 100px;
+}
+
+#l {
+  color: #52b7cd;
+}
+
+#add {
+    display: inline-block;
+    width: 100%;
 }
 
 #condition-heading {
@@ -35,21 +55,30 @@ body {
     width: 100%;
 }
 
+#bottom-nav-bar {
+  background: linear-gradient(to top right, #68c3d2, #a5cbcc); /* Standard syntax */
+}
+
 #bottom-nav-bar a {
   background: linear-gradient(to top right, #68c3d2, #a5cbcc); /* Standard syntax */
   color: white;
   /*font-family: 'Open Sans', sans-serif;*/
 }
 
-#bottom-nav-bar {
-  background: linear-gradient(to top right, #68c3d2, #a5cbcc); /* Standard syntax */
-}
-
-
 /*dashboard styling*/
 #dashboardBody {
   /*background: linear-gradient(to top right, #52b7cd 0%, #a5cbcc 100%);*/
   background: radial-gradient(white, #fcfcfc, #f2f2f2);
+}
+
+#dashButton, #profileButton {
+  background: linear-gradient(to top right, #4ebaca, #68c3d2);
+  border-radius: 5px;
+  text-align: center;
+}
+
+#otherButton {
+  text-align: center;
 }
 
 #cards, #add {

@@ -13,12 +13,12 @@
   </head>
   <body id="dashboardBody">
     <!-- header -->
-    <nav id="navbar" class="navbar fixed-top">
+    <nav id="navbar" class="navbar">
       <span class="navbar-brand mb-0 h1">Forever 41</span>
       <span style="float:right;"><i class="fa fa-sign-out" aria-hidden="true"></i>
-      <i id="help" class="fa fa-question-circle" aria-hidden="true"></i></span>
+      <i id="help" class="fa fa-question-circle" type="button" data-toggle="modal" data-target="#helpModal" aria-hidden="true"></i></span>
     </nav>
-    <br><br><br>
+    <br>
 
     <div class="media col-sm-2">
       <img id="profpic" class="img-thumbnail align-self-center mr-3" src="./images/profpic.jpg" class="img-fluid rounded mx-auto d-block" alt="Responsive image">
@@ -28,19 +28,20 @@
     </div>
     <br>
 
-    <div class="container">
+    <div class="container" id="card-container">
     </div>
+    <br><br><br><br>
 
 
 
     <!-- bottom nav bar -->
     <nav id="bottom-nav-bar" class="navbar navbar-dark bg-dark fixed-bottom justify-content-center">
       <ul class="nav">
-        <li class="nav-item">
-          <a color="white" type="button" class="nav-link" href="dashboard.html">Dashboard</a>
+        <li class="nav-item" id="dashButton">
+          <a type="button" class="nav-link" href="dashboard.html">Dashboard</a>
         </li>
-        <li class="nav-item">
-          <a color="white" type="button" class="nav-link" href="./profile.html">Profile</a>
+        <li class="nav-item" id="otherButton">
+          <a type="button" class="nav-link" href="./profile.html">Profile</a>
         </li>
       </ul>
     </nav>
