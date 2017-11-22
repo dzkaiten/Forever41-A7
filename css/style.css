@@ -71,11 +71,24 @@
   background: radial-gradient(white, #fcfcfc, #f2f2f2);
 }
 
-#dashButton, #profileButton {
+/*DARKENS SELECTED DASHBOARD OR PROFILE*/
+/*#dashButton, #profileButton {
   background: linear-gradient(to top right, #4ebaca, #68c3d2);
   border-radius: 5px;
   text-align: center;
+}*/
+
+#iconContainer {
+  width: 40vw;
+  text-align: center;
+  color: white;
 }
+
+#dashButton_prof{
+   color: transparent;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: white;
+ }
 
 #otherButton {
   text-align: center;
