@@ -300,8 +300,7 @@ $('#help').click(function(){
 });
 
 $('.fa-sign-out').click(function() {
-  // window.location.href = './index.html';
-  $('#myModal').modal('show');
+  $('#myModal').modal('show')
 });
 
 $('#modal-logout').click(function() {
